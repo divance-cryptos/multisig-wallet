@@ -1,6 +1,6 @@
 const { expectRevert } = require('@openzeppelin/test-helpers');
+const { web3 } = require('@openzeppelin/test-helpers/src/setup');
 const { expect } = require('chai');
-const { assert } = require("console");
 
 const Wallet = artifacts.require('Wallet');
 
@@ -24,14 +24,14 @@ contract('Wallet', (accounts) => {
         assert(quorum.toNumber() === 2);
     })
 
-    it('should create transfers ', async () => {
+    it.only('should create transfers ', async () => {
         await wallet.createTransfer(100, accounts[5], { from: accounts[0] });
         const transfers = await wallet.getTransfers();
 
         assert(transfers.length === 1);
-        assert(transfers[0].id === '0');
+        assert(transfers[0].id === '1');
         assert(transfers[0].amount === '100');
-        assert(transfers[0].to === '5');
+        expect(transfers[0].to).to.eql(accounts[5]);
         assert(transfers[0].approvals === '0');
         assert(transfers[0].sent === false );
     })
@@ -51,7 +51,7 @@ contract('Wallet', (accounts) => {
         await expectRevert(wallet.createTransfer(100, accounts[5], { from: accounts[7] }) , 'only approver allowed');
     })
 
-    it.only('should approve transfers', async () => {
+    it('should approve transfers', async () => {
         await wallet.createTransfer(100, accounts[5], { from: accounts[0] });
         await wallet.approveTransfer(0, { from: accounts[1] });
         const transfers = await wallet.getTransfers();
@@ -61,6 +61,25 @@ contract('Wallet', (accounts) => {
         expect(balance).to.eql('1000');
         expect(transfers[0].approvals).to.eql('1');
         expect(transfers[0].sent).to.be.equal(false);
-
     })
+
+    it('should transfer if quorum reached', async () => {
+        const balanceBefore  = web3.utils.toBN(await web3.eth.getBalance(accounts[6]));
+        await wallet.createTransfer(100, accounts[6], { from: accounts[0] });
+        await wallet.approveTransfer(0, { from: accounts[0] });
+        await wallet.approveTransfer(0, { from: accounts[1] });
+        const transfers = await wallet.getTransfers();
+        const walletBalance = await web3.eth.getBalance(wallet.address);
+        const quorum = await wallet.quorum();
+        const balanceAfter = web3.utils.toBN(await web3.eth.getBalance(accounts[6]));
+        const diffBalance = balanceAfter.sub(balanceBefore);
+
+        expect(transfers.length).to.eql(1);
+        expect(walletBalance).to.eql('900');
+        expect(transfers[0].approvals).to.eql('2');
+        expect(transfers[0].sent).to.be.equal(true);
+        expect(quorum.toNumber()).to.eql(2);
+        expect(diffBalance.toNumber()).to.eql(100);
+    })
+
 })

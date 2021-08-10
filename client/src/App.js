@@ -12,7 +12,7 @@ function App() {
 
   useEffect(() => {
     const init = async () => {
-      const web3 = getWeb3();
+      const web3 = await getWeb3();
       const accounts = await web3.eth.getAccounts();
       const wallet = await getWallet(web3);
       const approvers = await wallet.methods.getApprovers().call();
@@ -30,9 +30,13 @@ function App() {
   const isInfraNotReady = web3 === undefined || accounts === undefined || wallet === undefined;
   const isContractDataReady = approvers.length === 0 || quorum === undefined
 
-  if (
-     isInfraNotReady || isContractDataReady
-   ) {
+  if(
+    typeof web3 === 'undefined'
+    || typeof accounts === 'undefined'
+    || typeof wallet === 'undefined'
+    || approvers.length === 0
+    || typeof quorum === 'undefined'
+  ) {
     return <div>Loading...</div>;
   }
 

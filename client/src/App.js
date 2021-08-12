@@ -1,6 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { getWeb3, getWallet } from './utils/utils.js';
 import Header from './components/Header.js';
+import Transfer from './components/Transfer.js';
+import TransferList from './components/TransferList.js';
+
+
 
 function App() {
   const [web3, setWeb3] = useState(undefined);
@@ -8,19 +12,22 @@ function App() {
   const [wallet, setWallet] = useState(undefined);
   const [approvers, setApprovers] = useState([]);
   const [quorum, setQuorum] = useState(undefined);
+  const [transfers, setTransfers] = useState([]);
 
   useEffect(() => {
     const init = async () => {
-      const web3 = getWeb3();
+      const web3 = await getWeb3();
       const accounts = await web3.eth.getAccounts();
       const wallet = await getWallet(web3);
       const approvers = await wallet.methods.getApprovers().call();
       const quorum = await wallet.methods.quorum().call();
+      const transfers = await wallet.methods.getTransfers().call();
       setWeb3(web3);
       setAccounts(accounts);
       setWallet(wallet);
       setApprovers(approvers);
       setQuorum(quorum);
+      setTransfers(transfers);
     }
     init();
   }, []);
@@ -35,10 +42,22 @@ function App() {
     return <div>Loading...</div>;
   }
 
+  const createTransfer = async (transfer) => {
+    console.log(`transfer processed ${transfer.amount}`);
+    await  wallet.methods.createTransfer(transfer.amount, transfer.to).send({from: accounts[0]})
+  }
+
+  const approveTransfer = async (transferId) => {
+      wallet.methods.approveTransfer(transferId)
+        .send({ from: accounts[0]});
+  }
+
   return (
     <div>
       Multisig Dapp
       <Header approvers={approvers} quorum={quorum} />
+      <Transfer createTransfer={createTransfer} />
+      <TransferList transfers={transfers} approveTransfer={approveTransfer}/>
     </div>
   );
 }

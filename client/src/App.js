@@ -3,6 +3,7 @@ import { getWeb3, getWallet } from './utils/utils.js';
 import Header from './components/Header.js';
 import Transfer from './components/Transfer.js';
 import TransferList from './components/TransferList.js';
+import GlobalStyle from './globalStyles';
 
 
 
@@ -55,6 +56,7 @@ function App() {
   return (
     <div>
       Multisig Dapp
+      <GlobalStyle />
       <Header approvers={approvers} quorum={quorum} />
       <Transfer createTransfer={createTransfer} />
       <TransferList transfers={transfers} approveTransfer={approveTransfer}/>

@@ -1,5 +1,8 @@
 # MultiSig Wallet
 
+![image](https://user-images.githubusercontent.com/3521485/130702462-e84c6d30-150f-4a70-9763-f7739b9a7a8f.png)
+
+
 This is a multisig wallet. The purpose of this repo is to have this project as portfolio and try to mantain and keep refactoring with best practices about solidity programing.
 
 Warning / Disclaimer

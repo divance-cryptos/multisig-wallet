@@ -10,6 +10,12 @@ const Container = styled.div`
   margin-right: 20%;
   height: 140px;
   justify-content: center;
+
+
+  @media screen and (max-width: 960px) {
+    width: 100%;
+    margin-left: 0;
+  }
 `
 
 const TransferList = ({ transfers, approveTransfer }) => {

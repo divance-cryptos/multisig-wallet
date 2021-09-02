@@ -13,6 +13,11 @@ const Container = styled.div`
   min-height: 20rem;
   flex-direction: column;
   align-items: center;
+
+  @media screen and (max-width: 960px) {
+    width: 100%;
+    margin-left: 0;
+  }
 `
 
 const Item = styled.div`

@@ -23,7 +23,16 @@ In truffle console migrate the smart contracts in order to deploy them in your t
   migrate --reset
 ```
 
-Start the client
+![image](https://user-images.githubusercontent.com/3521485/131921749-b8cbb30b-f7b0-4722-8496-701984a7d819.png)
+
+once you migrate you can pick address from there and add your playground accounts in your local
+
+### Start the client
+
+ ```
+  cd client
+  yarn start
+ ```
 
 ### Deploy on testnet
 

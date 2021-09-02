@@ -25,7 +25,13 @@ In truffle console migrate the smart contracts in order to deploy them in your t
 
 ![image](https://user-images.githubusercontent.com/3521485/131921749-b8cbb30b-f7b0-4722-8496-701984a7d819.png)
 
-once you migrate you can pick address from there and add your playground accounts in your local
+once you migrate you can pick address from there and add your playground accounts in your local in metamask
+
+#### run test in truffle console
+
+Running smartcontract tests inside truffle, just type test
+
+![image](https://user-images.githubusercontent.com/3521485/131922483-42d58307-9579-4f7e-93cb-f84a597b0b9a.png)
 
 ### Start the client
 

@@ -1,7 +1,7 @@
 # MultiSig Wallet
 
-![image](https://user-images.githubusercontent.com/3521485/130702462-e84c6d30-150f-4a70-9763-f7739b9a7a8f.png)
 
+![image](https://user-images.githubusercontent.com/3521485/131924357-51ff1cd3-bd33-4540-aefc-eeee359c6f67.png)
 
 This is a multisig wallet. The purpose of this repo is to have this project as portfolio and try to mantain and keep refactoring with best practices about solidity programing.
 
@@ -33,6 +33,18 @@ Running smartcontract tests inside truffle, just type test
 
 ![image](https://user-images.githubusercontent.com/3521485/131922483-42d58307-9579-4f7e-93cb-f84a597b0b9a.png)
 
+### Setup metamask
+
+In order to be able to run this Ethereum Dapp you have to install metamask to use it in your browser. (you can use other ethereum compatible ethereum wallet)
+
+Install Metamask extension https://metamask.io/ if you got stuck in the FAQ you will find how to install metamask then in the footer you can get the docs. Create an issue if you don't know what to do I will try to help you ASAP.
+
+![image](https://user-images.githubusercontent.com/3521485/131923366-bcc47670-d3c2-4204-9279-300af316f85a.png)
+
+They you can add some accounts to metamask from the copy keys you generated in truffle console. Only approvers can do transfers, the approvers by default are the ones from 0 to 2 address, the ones that truffle uses when we deploy the smart contract in local.
+
+https://medium.com/publicaio/how-import-a-wallet-to-your-metamask-account-dcaba25e558d
+
 ### Start the client
 
  ```
@@ -51,3 +63,5 @@ In this repo we are using Infura so you need.
 ### Deploy on mainnet
 
 Recall that this smart contracts hadn't been audited.
+
+### Contribute

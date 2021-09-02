@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import TransferList from "./TransferList";
 
 const Container = styled.div`
   display: flex;
@@ -11,7 +10,7 @@ const Container = styled.div`
   margin-top: 40px;
   padding-top: 50px;
   flex-wrap: wrap;
-  min-height: 40rem;
+  min-height: 20rem;
   flex-direction: column;
   align-items: center;
 `
@@ -129,10 +128,8 @@ const Transfer = ({ createTransfer, transfers, approveTransfer }) => {
               <Button type="submit">Submit</Button>
             </Form>
           </Item>
-          <Item>
-            <TransferList transfers={transfers} approveTransfer={approveTransfer}/>
-          </Item>
         </Container>
+
     )
 }
 

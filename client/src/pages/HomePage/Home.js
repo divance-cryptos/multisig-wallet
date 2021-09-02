@@ -2,6 +2,8 @@ import React, { useState, useEffect }from 'react';
 import Header from './../../components/Header.js';
 import Transfer from './../../components/Transfer.js';
 import { getWeb3, getWallet } from './../../utils/utils.js';
+import TransferList from "./../../components/TransferList";
+
 
 
 function Home() {
@@ -49,6 +51,7 @@ function Home() {
     <>
       <Header approvers={approvers} quorum={quorum} />
       <Transfer createTransfer={createTransfer}  approveTransfer={approveTransfer}  transfers={transfers}/>
+      <TransferList transfers={transfers} approveTransfer={approveTransfer}/>
     </>
   );
 }

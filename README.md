@@ -20,7 +20,15 @@ In truffle console migrate the smart contracts in order to deploy them in your t
   migrate --reset
 ```
 
+Start the client
+
 ### Deploy on testnet
+
+In this repo we are using Infura so you need.
+
+```
+  migrate --reset
+```
 
 ### Deploy on mainnet
 

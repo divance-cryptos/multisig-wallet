@@ -11,6 +11,26 @@ const GlobalStyle = createGlobalStyle`
   html, body {
     overflow-x: hidden;
   }
+
+  table {
+    width: 100%;
+    border: 1px solid black;
+    border-collapse: collapse;
+    background: white;
+  th,
+  td {
+    border: 1px solid black;
+    border-collapse: collapse;
+  }
+  th,
+  td,
+  tr {
+    padding: 5px;
+  }
+  th {
+    text-align: left;
+  }
+  }
 `;
 
 export const Container = styled.div`

@@ -3,44 +3,41 @@ import styled from "styled-components/macro";
 
 const SubNav = styled.div`
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  height: 60px;
+  justify-content: center;
+  height: 90px;
   font-size: 14px;
   background: #4b59f7;
-  padding-left: 20%;
+
+
+  @media screen and (max-width: 960px) {
+    height: 120px;
+  }
 `;
 
 export const Display = styled.ul`
-  display: flex;
-  align-items: center;
-  list-style: none;
-  text-align: left;
-  flex-direction: column;
-
-  @media screen and (max-width: 960px) {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    height: 90vh;
-    position: absolute;
-    top: 80px;
-    left: ${({ click }) => (click ? 0 : '-100%')};
-    opacity: 1;
-    transition: all 0.5s ease;
-    background: #101522;
-  }
+   align-items: center;
+   justify-content: center;
 `;
 
 
 export const Item = styled.li`
+  display: flex;
+  justify-content: left;
+  flex-direction: row;
+  align-items: center;
+  list-style-type: none;
+  color: white;
+
   @media screen and (max-width: 960px) {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 120px;
+    font-size: 12px;
+    height: 23px;;
   }
+`;
+
+export const Label = styled.li`
+  font-weight: bold;
+  padding-right: 5px;
 `;
 
 function Header({ approvers, quorum }) {
@@ -48,12 +45,13 @@ function Header({ approvers, quorum }) {
     <>
       <SubNav>
         <Display>
-          <Item>Approvers: {approvers.join(", ")}</Item>
-          <Item>Quorum: {quorum}</Item>
+          <Item><Label>Approver 1 :</Label> {approvers[0]} </Item>
+          <Item><Label>Approver 2 :</Label> {approvers[1]} </Item>
+          <Item><Label>Approver 3 :</Label> {approvers[2]} </Item>
+          <Item><Label>Quorum: </Label> {quorum} </Item>
         </Display>
       </SubNav>
     </>
   );
 }
-
 export default Header;

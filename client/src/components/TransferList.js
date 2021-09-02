@@ -1,8 +1,20 @@
+import styled from "styled-components";
 import React from 'react';
+
+const Container = styled.div`
+  display: flex;
+  background-color: #101522;
+  align-items: flex-start;
+  margin-top: 20px;
+  margin-left: 20%;
+  margin-right: 20%;
+  height: 140px;
+  justify-content: center;
+`
 
 const TransferList = ({ transfers, approveTransfer }) => {
     return (
-       <div>
+       <Container>
          <table>
             <thead>
                <tr>
@@ -29,7 +41,7 @@ const TransferList = ({ transfers, approveTransfer }) => {
                 ))}
             </tbody>
          </table>
-      </div>
+      </Container>
     )
 }
 

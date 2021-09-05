@@ -8,14 +8,24 @@ const Container = styled.div`
   margin-top: 20px;
   margin-left: 20%;
   margin-right: 20%;
-  height: 140px;
+  height: 500px;
   justify-content: center;
 
 
   @media screen and (max-width: 960px) {
     width: 100%;
     margin-left: 0;
+    height: 800px;
   }
+`
+const Button = styled.button`
+    background-color: #008CBA; /* Green */
+    border: none;
+    text-decoration: none;
+    padding: 15px 32px;
+    margin-left: 10px;
+    font-size: 16px;
+    color: white;
 `
 
 const TransferList = ({ transfers, approveTransfer }) => {
@@ -39,7 +49,7 @@ const TransferList = ({ transfers, approveTransfer }) => {
                        <td>{transfer.to}</td>
                        <td>
                            {transfer.approvals}
-                            <button onClick={() => approveTransfer(transfer.id)}>Approve</button>
+                            <Button onClick={() => approveTransfer(transfer.id)}>Approve</Button>
                        </td>
                        <td>{transfer.sent ? 'yes' : 'no'}</td>
 

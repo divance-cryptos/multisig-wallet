@@ -35,7 +35,7 @@ export const Item = styled.li`
   }
 `;
 
-export const Label = styled.li`
+export const Label = styled.p`
   font-weight: bold;
   padding-right: 5px;
 `;

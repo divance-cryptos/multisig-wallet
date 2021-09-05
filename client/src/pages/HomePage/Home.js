@@ -30,7 +30,7 @@ function Home() {
       setTransfers(transfers);
     }
     init();
-  }, []);
+  }, [transfers]);
 
   if(
     typeof web3 === 'undefined' || typeof accounts === 'undefined' || typeof wallet === 'undefined' || approvers.length === 0 || typeof quorum === 'undefined'

@@ -54,10 +54,13 @@ https://medium.com/publicaio/how-import-a-wallet-to-your-metamask-account-dcaba2
 
 ### Deploy on testnet
 
-In this repo we are using Infura so you need.
+In this repo we are using Infura so you need to set some configuration and get the kovan endpoint.
+Generate fakes keys for kovan.
+
+https://vanity-eth.tk/
 
 ```
-  migrate --reset
+  truffle migrate --reset --network kovan
 ```
 
 ### Deploy on mainnet

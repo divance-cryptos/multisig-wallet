@@ -26,8 +26,6 @@ const path = require('path');
 const provider = require('@truffle/hdwallet-provider');
 const secrets = require('./.secrets.json')
 
-const
-
 module.exports = {
   /**
    * Networks define how you connect to your ethereum client and let you set the
@@ -56,7 +54,7 @@ module.exports = {
         0,
         3
       ),
-      network_id = 42
+      network_id: 42
     },
 
     // development: {
